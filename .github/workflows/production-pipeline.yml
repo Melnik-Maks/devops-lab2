@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: read
+  packages: write
+
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
@@ -82,7 +86,6 @@ jobs:
       - name: Deploy to staging
         run: |
           echo "Deploying to staging..."
-          # kubectl set image deployment/app app=${{ needs.build.outputs.image-tag }}
 
 
   deploy-production:
